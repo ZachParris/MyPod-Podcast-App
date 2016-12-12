@@ -23,9 +23,9 @@ namespace MyPod
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+            bundles.Add(new ScriptBundle("~/bundles/src/app").Include(
                       "~/Scripts/angular.js",
-                      "~/Scripts/app.js"));
+                      "~/Scripts/src/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

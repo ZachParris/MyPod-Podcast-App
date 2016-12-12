@@ -10,19 +10,20 @@ namespace MyPod.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.IsLandingPage = true;
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This is a place to share podcasts as well as thoughts and ideas!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact us anytime!";
 
             return View();
         }
