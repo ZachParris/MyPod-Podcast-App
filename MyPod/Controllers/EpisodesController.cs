@@ -16,18 +16,19 @@ namespace MyPod.Controllers
     public class EpisodesController : ApiController
     {
         private MyPodContext db = new MyPodContext();
+        private MyPodRepository repo = new MyPodRepository();
 
         // GET: api/Episodes
         public IQueryable<Episode> GetEpisode()
         {
-            return db.Episode;
+            return db.Episodes;
         }
 
         // GET: api/Episodes/5
         [ResponseType(typeof(Episode))]
         public IHttpActionResult GetEpisode(int id)
         {
-            Episode episode = db.Episode.Find(id);
+            Episode episode = db.Episodes.Find(id);
             if (episode == null)
             {
                 return NotFound();
@@ -80,7 +81,7 @@ namespace MyPod.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Episode.Add(episode);
+            db.Episodes.Add(episode);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = episode.EpisodeId }, episode);
@@ -90,13 +91,13 @@ namespace MyPod.Controllers
         [ResponseType(typeof(Episode))]
         public IHttpActionResult DeleteEpisode(int id)
         {
-            Episode episode = db.Episode.Find(id);
+            Episode episode = db.Episodes.Find(id);
             if (episode == null)
             {
                 return NotFound();
             }
 
-            db.Episode.Remove(episode);
+            db.Episodes.Remove(episode);
             db.SaveChanges();
 
             return Ok(episode);
@@ -113,7 +114,7 @@ namespace MyPod.Controllers
 
         private bool EpisodeExists(int id)
         {
-            return db.Episode.Count(e => e.EpisodeId == id) > 0;
+            return db.Episodes.Count(e => e.EpisodeId == id) > 0;
         }
     }
 }

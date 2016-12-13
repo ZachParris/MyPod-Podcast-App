@@ -22,7 +22,7 @@ namespace MyPod.DAL
 
         public object GetPodcasts()
         {
-            return Context.User.Select(u => u.UserId).ToString();
+            return Context.Users.Select(u => u.Id);
         }
 
         public void AddPodcast(Podcast new_podcast)
@@ -34,7 +34,7 @@ namespace MyPod.DAL
         public bool AddPodcastToUser(string userId, string podcastId)
         {
             Podcast found_podcast = Context.Podcasts.FirstOrDefault(p => p.Title == podcastId);
-            User found_user = Context.User.FirstOrDefault(u => u.BaseUser.Id == userId);
+            ApplicationUser found_user = Context.Users.FirstOrDefault(u => u.Id == userId);
             if (found_podcast != null && found_user != null)
             {
                 found_user.Subscriptions.Add(found_podcast);

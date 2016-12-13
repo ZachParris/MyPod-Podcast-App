@@ -17,6 +17,7 @@ namespace MyPod.Controllers
     public class PodcastsController : ApiController
     {
         private MyPodContext db = new MyPodContext();
+        private MyPodRepository repo = new MyPodRepository();
 
         // GET: api/Podcasts
         public IQueryable<Podcast> GetPodcasts()
