@@ -25,6 +25,7 @@ namespace MyPod
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/angular.js",
+                      "~/Scripts/angular-route.min.js",
                       "~/Scripts/src/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

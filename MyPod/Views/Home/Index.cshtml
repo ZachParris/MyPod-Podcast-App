@@ -4,21 +4,17 @@
 
 <div class="jumbotron">
     <h1>MYPod</h1>
-    
-
     <div class="form-group">
         <div class="col-md-2 col-md-10">
             <p class="lead">Login or Sign up!</p>
-            <input type="submit" value="Log in" class="btn btn-default" />
-            <input type="submit" class="btn btn-default" value="Register" />
+            <div class="col s4 offset-s4">
+                <a ng-click="" class="btn btn-default">Login</a>
+                <a ng-click="" class="btn btn-default">Register</a>
+            </div>
         </div>
     </div>
-    <section ng-controller="searchCtrl as ctrl">
-        <input type="search" value="search" ng-model="ctrl.searchInput" />
-        <button class="glyphicon glyphicon-search" ng-click="ctrl.search()">Search</button> 
-        <div>
-            //search results here
-        </div>
-    </section>
-    
 </div>
+
+<ng-view></ng-view>
+
+//add player

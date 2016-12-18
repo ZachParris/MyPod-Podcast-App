@@ -1,10 +1,12 @@
-﻿var app = angular.module("MyPod", []);
+﻿var app = angular.module("MyPod", ['ngRoute']);
 
 app.controller("searchCtrl", function (searchService) {
     var vm = this;
+    vm.searchResults = [];
+
     vm.search = function () {
         searchService.searchItunes(vm.searchInput).then(function (response) {
-            debugger
+            vm.searchResults = response.data.results;
         }, function (error) {
             debugger
         })
@@ -30,3 +32,19 @@ app.service("searchService", function ($http) {
         searchItunes : searchItunes
     }
 })
+
+
+
+app.config(function($routeProvider) {
+    $routeProvider.
+    when('/podcasts', {
+        templateUrl: 'Partials/podcasts.html',
+    }).
+    when('/Search', {
+        templateUrl: 'Partials/Search.html',
+    }).
+    when('/Messages', {
+        templateUrl : 'Partials/messages.html',
+    }).
+    otherwise('/');
+});

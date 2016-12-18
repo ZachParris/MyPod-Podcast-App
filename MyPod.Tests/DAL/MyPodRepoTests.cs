@@ -84,7 +84,7 @@ namespace MyPod.Tests.DAL
             mock_messages.As<IQueryable<Message>>().Setup(m => m.GetEnumerator()).Returns(() => query_messages.GetEnumerator());
 
             mock_context.Setup(c => c.Messages).Returns(mock_messages.Object);
-            mock_messages.Setup(u => u.Add(It.IsAny<Episode>())).Callback((Episode t) => episodes.Add(t));
+            mock_messages.Setup(u => u.Add(It.IsAny<Message>())).Callback((Message t) => messages.Add(t));
         }
 
         [TestMethod]

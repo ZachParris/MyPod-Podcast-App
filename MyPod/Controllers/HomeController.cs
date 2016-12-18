@@ -27,5 +27,26 @@ namespace MyPod.Controllers
 
             return View();
         }
+
+        public ActionResult Podcasts()
+        {
+            ViewBag.Message = "Podcasts you've subscribed to!";
+
+            return View();
+        }
+
+        public ActionResult Search()
+        {
+            ViewBag.Message = "Let's find some podcasts!";
+
+            return View();
+        }
+
+        public ActionResult Message()
+        {
+            ViewBag.Message = "What have you been listening to?";
+
+            return View();
+        }
     }
 }
