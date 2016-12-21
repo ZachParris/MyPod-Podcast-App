@@ -192,12 +192,16 @@
     <Compile Include="Migrations\201612130007438_InitialCreate.Designer.cs">
       <DependentUpon>201612130007438_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612182028382_BlogModelMigration.cs" />
+    <Compile Include="Migrations\201612182028382_BlogModelMigration.Designer.cs">
+      <DependentUpon>201612182028382_BlogModelMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Episode.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Podcast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -211,7 +215,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
-    <Content Include="Partials\messages.html" />
+    <Content Include="Partials\blog.html" />
     <Content Include="Partials\Search.html" />
     <Content Include="Partials\podcasts.html" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -248,7 +252,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -270,7 +273,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,6 +288,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612130007438_InitialCreate.resx">
       <DependentUpon>201612130007438_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612182028382_BlogModelMigration.resx">
+      <DependentUpon>201612182028382_BlogModelMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -304,9 +309,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50965</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50965/</IISUrl>
+          <IISUrl>http://localhost:52150/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

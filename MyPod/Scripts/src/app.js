@@ -2,6 +2,7 @@
 
 app.controller("searchCtrl", function (searchService) {
     var vm = this;
+    const parser = new DOMParser();
     vm.searchResults = [];
 
     vm.search = function () {
@@ -13,7 +14,15 @@ app.controller("searchCtrl", function (searchService) {
     }
     vm.getPodcastFeed = function (url) {
         searchService.searchResult(url).then(function (response) {
-            debugger
+            const xml = parser.parseFromString(response.data, "text/xml");
+            const enclosures = xml.querySelectorAll("enclosure");
+            vm.episodes = [];
+            for (let item of enclosures.entries()) {
+                debugger
+                vm.episodes.push({
+                    url: item[1].attributes[0].nodeValue
+                })
+            }
         }, function (error) {
             debugger
         })
@@ -22,14 +31,14 @@ app.controller("searchCtrl", function (searchService) {
 
 app.service("searchService", function ($http) {
     var searchItunes = function (searchTerm) {
-        return $http.get("https://itunes.apple.com/search?entity=podcast&term=" + searchTerm);
+        return $http.get("https://podcast-player-mypod.herokuapp.com/api/iTunes/search?entity=podcast&term=" + searchTerm);
     }
     var searchResult = function (url) {
-        return $http.get(url);
+        return $http.get("https://podcast-player-mypod.herokuapp.com/api/feed/?feedUrl=" + url);
     }
     return {
         searchResult: searchResult,
-        searchItunes : searchItunes
+        searchItunes: searchItunes
     }
 })
 

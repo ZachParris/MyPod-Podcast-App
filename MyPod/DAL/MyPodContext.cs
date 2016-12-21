@@ -11,6 +11,6 @@ namespace MyPod.DAL
     {
         public virtual DbSet<Podcast> Podcasts { get; set; }
         public virtual DbSet<Episode> Episodes { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Blog> Posts { get; set; }
     }
 }

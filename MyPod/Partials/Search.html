@@ -7,15 +7,10 @@
     <div class="panel panel-default">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="result in ctrl.searchResults">
+                <img src="{{result.artworkUrl60}}" />
                 <strong>{{result.collectionName}}</strong>
-                <img src="{{result.ImageURL}}" />
-                <h4>
-                    {{result.Author}}
-                </h4>
-                <div>{{result.Episode}}</div>
-                <div>
-                    <span class="glyphicon glyphicon-retweet"></span>
-                </div>
+                <h4>{{result.author}}</h4>
+                <a ng-click="ctrl.getPodcastFeed(result.feedUrl)" class="btn btn-default">Episodes</a>
             </li>
         </ul>
     </div>

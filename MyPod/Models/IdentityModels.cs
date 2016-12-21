@@ -11,7 +11,7 @@ namespace MyPod.Models
     public class ApplicationUser : IdentityUser
     {
         public virtual List<Podcast> Subscriptions { get; set; }
-        public virtual List<Message> Messages { get; set; }
+        public virtual List<Blog> Posts { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -31,7 +31,7 @@ namespace MyPod.DAL
             Context.SaveChanges();
         }
 
-        public bool AddPodcastToUser(string userId, string podcastId)
+        public bool AddPodcastChannelToUser(string userId, string podcastId)
         {
             Podcast found_podcast = Context.Podcasts.FirstOrDefault(p => p.Title == podcastId);
             ApplicationUser found_user = Context.Users.FirstOrDefault(u => u.Id == userId);
@@ -44,7 +44,6 @@ namespace MyPod.DAL
             {
                 return false;   
             }
-           
         }
     }
 }

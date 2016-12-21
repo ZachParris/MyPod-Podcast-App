@@ -15,14 +15,14 @@ namespace MyPod.Tests.DAL
     {
         private Mock<DbSet<Podcast>> mock_podcasts;
         private Mock<DbSet<Episode>> mock_episodes;
-        private Mock<DbSet<Message>> mock_messages;
+        private Mock<DbSet<Blog>> mock_posts;
 
         private Mock<DbSet<ApplicationUser>> mock_users { get; set; }
         private Mock<MyPodContext> mock_context { get; set; }
         private MyPodRepository Repo { get; set; }
         private List<ApplicationUser> users { get; set; }
         private List<Podcast> podcasts { get; set; }
-        public List<Message> messages { get; private set; }
+        public List<Blog> posts { get; private set; }
         public List<Episode> episodes { get; private set; }
 
         [TestInitialize]
@@ -32,10 +32,10 @@ namespace MyPod.Tests.DAL
             mock_users = new Mock<DbSet<ApplicationUser>>();
             mock_podcasts = new Mock<DbSet<Podcast>>();
             mock_episodes = new Mock<DbSet<Episode>>();
-            mock_messages = new Mock<DbSet<Message>>();
+            mock_posts = new Mock<DbSet<Blog>>();
             Repo = new MyPodRepository(mock_context.Object);
 
-            messages = new List<Message>();
+            posts = new List<Blog>();
             episodes = new List<Episode>();
             podcasts = new List<Podcast>();
             ApplicationUser paulyD = new ApplicationUser { Email = "paulyD@example.com", Id = "1234567" };
@@ -52,7 +52,7 @@ namespace MyPod.Tests.DAL
             var query_users = users.AsQueryable();
             var query_podcasts = podcasts.AsQueryable();
             var query_episodes = episodes.AsQueryable();
-            var query_messages = messages.AsQueryable();
+            var query_blog = posts.AsQueryable();
 
             mock_users.As<IQueryable<ApplicationUser>>().Setup(m => m.Provider).Returns(query_users.Provider);
             mock_users.As<IQueryable<ApplicationUser>>().Setup(m => m.Expression).Returns(query_users.Expression);
@@ -78,13 +78,13 @@ namespace MyPod.Tests.DAL
             mock_context.Setup(c => c.Episodes).Returns(mock_episodes.Object);
             mock_episodes.Setup(u => u.Add(It.IsAny<Episode>())).Callback((Episode t) => episodes.Add(t));
 
-            mock_messages.As<IQueryable<Message>>().Setup(m => m.Provider).Returns(query_messages.Provider);
-            mock_messages.As<IQueryable<Message>>().Setup(m => m.Expression).Returns(query_messages.Expression);
-            mock_messages.As<IQueryable<Message>>().Setup(m => m.ElementType).Returns(query_messages.ElementType);
-            mock_messages.As<IQueryable<Message>>().Setup(m => m.GetEnumerator()).Returns(() => query_messages.GetEnumerator());
+            mock_posts.As<IQueryable<Blog>>().Setup(m => m.Provider).Returns(query_blog.Provider);
+            mock_posts.As<IQueryable<Blog>>().Setup(m => m.Expression).Returns(query_blog.Expression);
+            mock_posts.As<IQueryable<Blog>>().Setup(m => m.ElementType).Returns(query_blog.ElementType);
+            mock_posts.As<IQueryable<Blog>>().Setup(m => m.GetEnumerator()).Returns(() => query_blog.GetEnumerator());
 
-            mock_context.Setup(c => c.Messages).Returns(mock_messages.Object);
-            mock_messages.Setup(u => u.Add(It.IsAny<Message>())).Callback((Message t) => messages.Add(t));
+            mock_context.Setup(c => c.Posts).Returns(mock_posts.Object);
+            mock_posts.Setup(u => u.Add(It.IsAny<Blog>())).Callback((Blog t) => posts.Add(t));
         }
 
         [TestMethod]
@@ -94,11 +94,20 @@ namespace MyPod.Tests.DAL
             Assert.IsNotNull(repo);
         }
 
+
         [TestMethod]
-        public void RepoEnsureCanSubscribeToPodcasts()
+        public void RepoEnsureCanSearchForPodcasts()
+        {
+            MyPodRepository repo = new MyPodRepository();
+
+
+        }
+
+        [TestMethod]
+        public void RepoEnsureCanSubscribeToPodcastChannel()
         {
             ConnectToDatastore();
-            Repo.AddPodcastToUser("trentS", "thejoeroganexperience");
+            Repo.AddPodcastChannelToUser("trentS", "thejoeroganexperience");
 
             int expected_podcasts = 1;
             //int actual_podcasts = Repo.GetPodcasts().Count;
@@ -112,6 +121,29 @@ namespace MyPod.Tests.DAL
 
         }
 
+        [TestMethod]
+        public void RepoEnsureUserCanPlayEpisode()
+        {
+
+        }
+
+        [TestMethod]
+        public void RepoEnsureUserCanCreateBlogPost()
+        {
+
+        }
+
+        [TestMethod]
+        public void RepoEnsureCanEditBlogPost()
+        {
+
+        }
+
+        [TestMethod]
+        public void RepoEnsureUserCanRemoveBlogPost()
+        {
+
+        }
 
     }
 }
