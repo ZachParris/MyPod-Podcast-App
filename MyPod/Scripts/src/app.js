@@ -52,8 +52,8 @@ app.config(function($routeProvider) {
     when('/search', {
         templateUrl: 'Partials/Search.html',
     }).
-    when('/messages', {
-        templateUrl : 'Partials/messages.html',
+     when('/blog', {
+        templateUrl: 'Partials/blog.html',
     }).
     otherwise('/');
 });

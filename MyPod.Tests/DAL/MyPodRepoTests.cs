@@ -99,6 +99,8 @@ namespace MyPod.Tests.DAL
         public void RepoEnsureCanSearchForPodcasts()
         {
             MyPodRepository repo = new MyPodRepository();
+            ConnectToDatastore();
+
 
 
         }
