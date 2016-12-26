@@ -45,5 +45,37 @@ namespace MyPod.DAL
                 return false;   
             }
         }
+
+        public void AddBlogPost(string user, string blog_post)
+        {
+            ApplicationUser found_user = Context.Users.FirstOrDefault(u => u.Id == user);
+            if (found_user != null)
+            {
+                Blog new_post = new Blog
+                {
+                    BlogAuthor = found_user,
+                    Post = blog_post
+                };
+                Context.Posts.Add(new_post);
+                Context.SaveChanges();
+            }
+        }
+
+        public RemovePost(int blogPost_id)
+        {
+            Blog found_post = Context.Posts.FirstOrDefault(p => p.PostId == blogPost_id);
+            if (found_post != null)
+            {
+                Context.Posts.Remove(found_post);
+                Context.SaveChanges();
+            }
+
+            return found_post;
+        }
+
+
+
+
+
     }
 }

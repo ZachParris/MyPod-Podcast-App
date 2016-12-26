@@ -20,12 +20,20 @@ app.controller("searchCtrl", function (searchService) {
             for (let item of enclosures.entries()) {
                 debugger
                 vm.episodes.push({
-                    url: item[1].attributes[0].nodeValue
+                    url: item[1].attributes[2].url.value,
+                    description: item[1].attributes[2].url.textContent,
+                    length: item[1].attributes[0].length.value
                 })
             }
         }, function (error) {
             debugger
         })
+    }
+    vm.followPodcastChannel = function (url) {
+        searchService.subscription = function (userChoice) {
+            vm.subscriptions = [];
+
+        }
     }
 })
 
@@ -36,7 +44,11 @@ app.service("searchService", function ($http) {
     var searchResult = function (url) {
         return $http.get("https://podcast-player-mypod.herokuapp.com/api/feed/?feedUrl=" + url);
     }
+    var subscription = function (channel) {
+        return $http.get("https://podcast-player-mypod.herokuapp.com/api/iTunes/search?entity=podcast&term=" + channel)
+    }
     return {
+        subscription: subscription,
         searchResult: searchResult,
         searchItunes: searchItunes
     }
@@ -54,6 +66,9 @@ app.config(function($routeProvider) {
     }).
      when('/blog', {
         templateUrl: 'Partials/blog.html',
-    }).
+     }).
+     when('/', {
+         templateUrl: 'Partials/home.html',
+     }).
     otherwise('/');
 });
