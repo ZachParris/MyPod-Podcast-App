@@ -1,4 +1,5 @@
-﻿<div class="container-fluid">
+﻿
+<div class="col-md-3" style="border:1px solid lightgrey;" id="profile_box">
     <form>
         <div class="form-group">
             <h1>Blog</h1>
@@ -10,3 +11,18 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+<div class="container col-sm-8 col-sm-offset-1" ng-controller="searchCtrl as ctrl">
+    <div class="panel panel-default">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="blog in getPosts()">
+                <strong>{{blog.Title}}</strong>
+                <p>
+                    {{blog.Post}}
+                </p>
+                <h3>{{blog.BlogAuthor}}</h3>
+            </li>
+        </ul>
+    </div>
+</div>
+

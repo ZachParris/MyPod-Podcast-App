@@ -31,6 +31,7 @@ namespace MyPod.DAL
             Context.SaveChanges();
         }
 
+
         public bool AddPodcastChannelToUser(string userId, string podcastId)
         {
             Podcast found_podcast = Context.Podcasts.FirstOrDefault(p => p.Title == podcastId);
@@ -61,7 +62,7 @@ namespace MyPod.DAL
             }
         }
 
-        public RemovePost(int blogPost_id)
+        public Blog RemoveBlogPost(int blogPost_id)
         {
             Blog found_post = Context.Posts.FirstOrDefault(p => p.PostId == blogPost_id);
             if (found_post != null)
@@ -69,11 +70,19 @@ namespace MyPod.DAL
                 Context.Posts.Remove(found_post);
                 Context.SaveChanges();
             }
-
             return found_post;
         }
 
+        public List<Blog> GetBlogPosts()
+        {
+            int i = 0;
+            return Context.Posts.ToList();
+        }
 
+        public ApplicationUser GetAppUser(string user_id)
+        {
+            return Context.Users.SingleOrDefault(u => u.Id == user_id);
+        }
 
 
 

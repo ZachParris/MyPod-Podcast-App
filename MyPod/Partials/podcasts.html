@@ -1,10 +1,16 @@
 ﻿<div class="container-fluid" ng-controller="searchCtrl as ctrl">
     <div class="media">
         <h1>YourPods!</h1>
-        <div class="media-left media-middle">
-            <a href="#">
-                <img class="media-object" src="{{result.ImageURL}}" alt="Yay podcasts!">
-            </a>
-        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="result in ctrl.searchResults">
+                <strong>{{result.Author"}}</strong>
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="{{result.artworkUrl60}}" alt="Yay podcasts!">
+                    </a>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
+

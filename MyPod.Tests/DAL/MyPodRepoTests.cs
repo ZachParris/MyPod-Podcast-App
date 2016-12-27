@@ -100,9 +100,6 @@ namespace MyPod.Tests.DAL
         {
             MyPodRepository repo = new MyPodRepository();
             ConnectToDatastore();
-
-
-
         }
 
         [TestMethod]
@@ -136,16 +133,12 @@ namespace MyPod.Tests.DAL
         }
 
         [TestMethod]
-        public void RepoEnsureCanEditBlogPost()
-        {
-
-        }
-
-        [TestMethod]
         public void RepoEnsureUserCanRemoveBlogPost()
         {
 
         }
+
+
 
     }
 }
