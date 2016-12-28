@@ -59,13 +59,25 @@ app.controller("blogCtrl", function (blogService) {
     vm.blogPosts = [];
 
     vm.blogNewPost = function () {
-        blogService.addPost(vm.)
+        blogService.addPost(vm.Post).then(function (post) {
+            vm.blogPosts = post.push({
+                title: "",
+                post: "",
+                author: ""
+            })
+        })
+    }
+    vm.getAllBlogPosts = function () {
+        blogService.getAllPosts();
     }
 })
 
 app.service("blogService", function ($http) {
     var addPost = function (blogText) {
-        return $http.post()
+        return $http.post("api/Blog", blogText);
+    }
+    var getAllPosts = function () {
+        return $http.get("api/Blog");
     }
 })
 
