@@ -3,11 +3,14 @@
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+.lead {
+    text-align:center;
+
 }
 
 .jumbotron {
     margin-top: 0px;
+    background-color:linen;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -24,6 +27,6 @@ textarea {
     max-width: 280px;
 }
 
-nav {
-    border:none;
+.form-control {
+    :center;
 }

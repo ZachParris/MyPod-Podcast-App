@@ -1,7 +1,19 @@
-﻿<div class="jumbotron">
-    <h1 class="display-3">MyPod</h1>
-    <p class="lead">A simple podcast player that encourages conversation about your favorite podcasts.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/#/search" role="button">Get started!</a>
-    </p>
-</div>
+﻿<section class="container-fluid" ng-controller="searchCtrl as ctrl">
+    <div class="jumbotron">
+        <h1 class="display-3">MyPod.</h1>
+        <p class="lead">A simple podcast player that encourages the sharing of thoughts and ideas.</p>
+
+        <div class="col s4 offset-s4 login-input">
+            <div class="col s4 offset-s4 login-input">
+                <input type="text" class="form-control" ng-model="ctrl.email" placeholder="email">
+            </div>
+            <div class="col s4 offset-s4 login-input">
+                <input type="password" class="form-control" ng-model="ctrl.password" placeholder="password">
+            </div>
+        </div>
+        <div class="col s4 offset-s4">
+            <a ng-click="ctrl.login()" class="btn btn-default">Login</a>
+            <a ng-click="ctrl.register()" class="btn btn-default">Register</a>
+        </div>
+    </div>
+</section>

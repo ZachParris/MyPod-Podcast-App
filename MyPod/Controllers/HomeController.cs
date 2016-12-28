@@ -11,6 +11,7 @@ namespace MyPod.Controllers
         public ActionResult Index()
         {
             ViewBag.IsLandingPage = true;
+            ViewBag.IsPlaying = false;
             return View();
         }
 

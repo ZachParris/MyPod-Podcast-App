@@ -54,6 +54,21 @@ app.service("searchService", function ($http) {
     }
 })
 
+app.controller("blogCtrl", function (blogService) {
+    var vm = this;
+    vm.blogPosts = [];
+
+    vm.blogNewPost = function () {
+        blogService.addPost(vm.)
+    }
+})
+
+app.service("blogService", function ($http) {
+    var addPost = function (blogText) {
+        return $http.post()
+    }
+})
+
 
 
 app.config(function($routeProvider) {
