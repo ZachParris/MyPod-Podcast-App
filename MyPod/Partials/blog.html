@@ -1,14 +1,11 @@
 ﻿
-<div class="col-md-3" style="border:1px solid lightgrey;" id="profile_box">
+<div class="col-md-3" ng-controller="blogCtrl as blog" style="border:1px solid lightgrey;">
     <form>
-        <div class="form-group" ng-controller="blogCtrl">
-            <h1>Blog</h1>
-            <div class="form-group">
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Title" ng-model="ctrl.blogNewPost">
-            </div>
-            <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="ctrl.blogNewPost"></textarea>
+        <div class="form-group">
+            <h2>blog.</h2>
+            <textarea class="blog-control" id="exampleTextarea" rows="3" ng-model="blog.blogInput"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="ctrl.blogNewPost">Submit</button>
+        <button type="submit" class="btn btn-default form-control" ng-click="blog.blogNewPost()">Submit</button>
     </form>
 </div>
 
@@ -16,11 +13,11 @@
     <div class="panel panel-default">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="blog in blogPosts">
-                <strong>{{blog.Title}}</strong>
                 <p>
                     {{blog.Post}}
                 </p>
-                <h3>{{blog.BlogAuthor}}</h3>
+                <button type="button" class="btn btn-default form-control" ng-click="blog.removePost()">Remove</button>
+
             </li>
         </ul>
     </div>

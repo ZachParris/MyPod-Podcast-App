@@ -1,39 +1,54 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using MyPod.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+
 
 namespace MyPod.Controllers
 {
     public class AccountWebAPIController : ApiController
     {
-        // GET: api/AccountWebAPI
-        public IEnumerable<string> Get()
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public AccountWebAPIController() { }
+
+        public AccountWebAPIController(ApplicationUserManager userManager,ApplicationSignInManager signInManager )
         {
-            return new string[] { "value1", "value2" };
+            UserManager = userManager;
+            SignInManager = signInManager;
         }
 
-        // GET: api/AccountWebAPI/5
-        public string Get(int id)
+        public ApplicationSignInManager SignInManager
         {
-            return "value";
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
         }
 
-        // POST: api/AccountWebAPI
-        public void Post([FromBody]string value)
+        public ApplicationUserManager UserManager
         {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
-        // PUT: api/AccountWebAPI/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE: api/AccountWebAPI/5
-        public void Delete(int id)
-        {
-        }
     }
 }

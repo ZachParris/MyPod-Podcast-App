@@ -10,7 +10,7 @@
 
 .jumbotron {
     margin-top: 0px;
-    background-color:linen;
+    background-color:white;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -28,5 +28,19 @@ textarea {
 }
 
 .form-control {
-    :center;
+    display: block;
+    margin: auto;
+    width: 40%;
+    margin-bottom: 1em;
+}
+
+.btn-center{
+    display: block;
+    margin: auto;
+    width: 10%;
+    margin-bottom: 1em;
+}
+
+h2{
+    color: gray;
 }

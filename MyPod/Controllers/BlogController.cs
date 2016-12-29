@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPod.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -22,9 +23,9 @@ namespace MyPod.Controllers
         }
 
         // POST: api/Blog
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Blog value)
         {
-
+            int i = 0;
         }
 
         // PUT: api/Blog/5

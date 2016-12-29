@@ -12,6 +12,7 @@ app.controller("searchCtrl", function (searchService) {
             debugger
         })
     }
+
     vm.getPodcastFeed = function (url) {
         searchService.searchResult(url).then(function (response) {
             const xml = parser.parseFromString(response.data, "text/xml");
@@ -29,12 +30,14 @@ app.controller("searchCtrl", function (searchService) {
             debugger
         })
     }
+
     vm.followPodcastChannel = function (url) {
         searchService.subscription = function (userChoice) {
             vm.subscriptions = [];
 
         }
     }
+
 })
 
 app.service("searchService", function ($http) {
@@ -59,25 +62,38 @@ app.controller("blogCtrl", function (blogService) {
     vm.blogPosts = [];
 
     vm.blogNewPost = function () {
-        blogService.addPost(vm.Post).then(function (post) {
-            vm.blogPosts = post.push({
-                title: "",
-                post: "",
-                author: ""
-            })
+        console.log("works");
+        blogService.addPost(vm.blogInput).then(function (post) {
+            debugger
+           vm.getAllBlogPosts();
         })
     }
     vm.getAllBlogPosts = function () {
-        blogService.getAllPosts();
+        blogService.getAllPosts().then(function (response) {
+            vm.blogPosts = response.data
+        })
+    }
+    vm.removePost = function () {
+        blogService.removeBlogPost().then(function (post) {
+            vm.blogPosts.remove(post)
+        })
     }
 })
 
 app.service("blogService", function ($http) {
     var addPost = function (blogText) {
-        return $http.post("api/Blog", blogText);
+        return $http.post("/api/Blog", blogText);
     }
     var getAllPosts = function () {
         return $http.get("api/Blog");
+    }
+    var removeBlogPost = function () {
+        return $http.get("api/Blog");
+    }
+    return {
+        addPost: addPost,
+        getAllPosts: getAllPosts,
+        removeBlogPost: removeBlogPost
     }
 })
 
