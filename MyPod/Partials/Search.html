@@ -26,9 +26,8 @@
         <div class="panel panel-default episodes" ng-model="getPodcastFeed">
             <ol class="list-group">
                 <li class="list-group-item" ng-repeat="episode in ctrl.episodes">
-                    <p>{{episode.description}}</p>
-                    <p>{{episode.length}}</p>
-                    <audio></audio>
+                    <p>{{episode.title}}</p>
+                    <audio controls> <source src="{{episode.url}}" type="audio/mpeg"></audio>
                 </li>
             </ol>
         </div>

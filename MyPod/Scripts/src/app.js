@@ -19,12 +19,15 @@ app.controller("searchCtrl", function (searchService) {
             const enclosures = xml.querySelectorAll("enclosure");
             vm.episodes = [];
             for (let item of enclosures.entries()) {
-                debugger
-                vm.episodes.push({
-                    url: item[1].attributes[2].url.value,
-                    description: item[1].attributes[2].url.textContent,
-                    length: item[1].attributes[0].length.value
-                })
+                var siblings = item[1].parentElement.childNodes;
+                for (let key in siblings){
+                    if (siblings[key].nodeName === "title") {
+                        vm.episodes.push({
+                            url: item[1].attributes.url.nodeValue,
+                            title: siblings[key].textContent
+                        })
+                    }
+                    }
             }
         }, function (error) {
             debugger
