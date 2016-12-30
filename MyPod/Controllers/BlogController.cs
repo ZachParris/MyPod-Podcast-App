@@ -1,4 +1,6 @@
-﻿using MyPod.Models;
+﻿using Microsoft.AspNet.Identity;
+using MyPod.DAL;
+using MyPod.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace MyPod.Controllers
 {
     public class BlogController : ApiController
     {
+        [HttpGet]
+        [Route("api/blog")]
         // GET: api/Blog
         public IEnumerable<string> Get()
         {
@@ -21,11 +25,14 @@ namespace MyPod.Controllers
         {
             return "value";
         }
-
+        [HttpPost]
+        [Route("api/blog")]
         // POST: api/Blog
-        public void Post([FromBody]Blog value)
+        public void Post([FromBody]string value)
         {
-            int i = 0;
+            MyPodRepository repo = new MyPodRepository();
+            var userId = User.Identity.GetUserId();
+            repo.AddBlogPost(userId, value);
         }
 
         // PUT: api/Blog/5

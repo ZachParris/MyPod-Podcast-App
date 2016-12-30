@@ -16,5 +16,9 @@
                                                                   
 <ng-view></ng-view>
 
-
- 
+<section class="container-fluid" ng-controller="searchCtrl as ctrl">
+        <div class="panel panel-default episodes" ng-model="getPodcastFeed">
+            <p>{{episode.title}}</p>
+            <audio controls> <source src="{{episode.url}}" type="audio/mpeg"></audio>
+        </div>
+</section>

@@ -54,8 +54,8 @@ namespace MyPod.DAL
             {
                 Blog new_post = new Blog
                 {
-                    BlogAuthor = found_user,
-                    Post = blog_post
+                    Post = blog_post,
+                    BlogAuthor = found_user
                 };
                 Context.Posts.Add(new_post);
                 Context.SaveChanges();
